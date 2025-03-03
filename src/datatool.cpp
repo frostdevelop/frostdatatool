@@ -1,11 +1,11 @@
 #include <stdint.h>
 #include <array>
 #include <string>
+#include <sstream>
 #include <iostream>
 #include <iomanip>
 #include <vector>
 #include "datatool.h"
-#include <QDebug>
 
 uint_fast16_t dtt::byte2ufast16(char bytes[2], const bool isLittle){
     unsigned char* ubytes = reinterpret_cast<unsigned char*>(bytes);
@@ -88,7 +88,6 @@ std::array<char,8> dtt::ufast642byte(const uint_fast64_t value, const bool isLit
 
 std::string dtt::byte2hex(unsigned char* bytes,size_t length){
     std::ostringstream temp;
-    qDebug() << length;
     temp << std::hex;
     for(size_t i=0;i<length;i++){
         temp << std::setw(2) << std::setfill('0') << static_cast<int>(bytes[i]);
